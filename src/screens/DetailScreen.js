@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { StyleSheet,ScrollView, Linking,View,Image } from 'react-native';
 import { Button, Card, Text, PricingCard, Tile } from 'react-native-elements';
 import { VictoryPie,VictoryChart,VictoryTheme,VictoryAxis,VictoryBar } from "victory-native";
@@ -27,6 +28,7 @@ const DetailScreen = ({ route }) => {
   useEffect(() => {
     setGraphicData(sampleData);
   }, []);
+ 
 
   return (
     <View style={style.allback}>
@@ -48,15 +50,17 @@ const DetailScreen = ({ route }) => {
        <Text style={style.word}>過去一週</Text>
        <View style={style.pic}>
        <VictoryChart
-        animate={{ easing: "exp" }}
+      
        width={330}
        height={300}
     theme={VictoryTheme.material}
   >
     <VictoryAxis/>
     <VictoryBar
+    animate={{ easing: "bounce" }}
+    data={graphicData}
       data={sampleData}
-      style={{ data: { width:30,fill: "#FF5511", fontFamily: 'System' }}}
+      style={{ data: { width:30,fill: "#FF5511" }}}
     />
   </VictoryChart>
      

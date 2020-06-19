@@ -3,7 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View, Image,ScrollView, Linking} fr
 import AlbumDetail from "../components/AlbumDetail";
 import albumData from "../json/albums.json";
 import DetailScreen from "./DetailScreen";
-
+import targetScreen from "./targetScreen";
+import helpScreen from "./helpScreen";
 
 const AlbumScreen = ({navigation }) => {
   return (
@@ -11,13 +12,15 @@ const AlbumScreen = ({navigation }) => {
     <ScrollView>
     <View style={styles.back}>
         <View style={styles.top}>
-        <TouchableOpacity  onPress={() => alert('ＴＡＢ！')}>
+        <TouchableOpacity 
+            onPress={() => navigation.navigate('target', targetScreen)}
+          >
             <Text style={styles.cata}>每日目標</Text>
             </TouchableOpacity>
             <TouchableOpacity  onPress={() => alert('ＴＡＢ！')}>
             <Text style={styles.record}>經期紀錄</Text>
             </TouchableOpacity>
-            <TouchableOpacity  onPress={() => alert('ＴＡＢ！')}>
+            <TouchableOpacity   onPress={() => navigation.navigate('help', helpScreen)}>
             <Text style={styles.ask}>在線諮詢 </Text>
             </TouchableOpacity>
             </View>
