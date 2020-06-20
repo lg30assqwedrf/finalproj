@@ -25,6 +25,7 @@ import albumData from "./src/json/albums.json";
 import ShareScreen from './src/screens/ShareScreen';
 import targetScreen from "./src/screens/targetScreen";
 import helpScreen from "./src/screens/helpScreen";
+import finishScreen from "./src/screens/finishScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -35,7 +36,7 @@ const AlbumStack = ({navigation}) => {
   return (
       <Stack.Navigator>
         <Stack.Screen 
-          name="健康類別" 
+          name="健康" 
           component={AlbumScreen} 
           options={{
             title: albumData.albumTitle,
@@ -111,6 +112,25 @@ const AlbumStack = ({navigation}) => {
               fontWeight: '400',
               fontSize: 20
             },  
+            
+          })}
+        />
+        <Stack.Screen 
+          name="finish" 
+          component={finishScreen}
+          options={({route})=>({
+           
+            title: '您的症狀',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+            
           })}
         />
                 

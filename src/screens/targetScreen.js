@@ -1,17 +1,31 @@
-import React from "react";
-import { StyleSheet,ScrollView, Linking,View,Image } from 'react-native';
+import React ,{useState,useRef}from "react";
+import { StyleSheet,ScrollView, Linking,View,Animated,Dimensions,TouchableOpacity,Image } from 'react-native';
 import { Button, Card, Text, PricingCard, Tile } from 'react-native-elements';
+
+const { width, height } = Dimensions.get("window");
 
 
 const targetScreen = ({ route }) => {
+
+  const [graphicData, setGraphicData] = useState(defaultData);
+  useEffect(() => {
+    setGraphicData(sampleData);
+  }, []);
+
   
+
   return (
+    
     <View style={style.allback}>
     <ScrollView >
-
+    <AnimatedBall
+      style={[position.getLayout(), style.ball]}
+      onPress={() => startAnimation()}
+    /> 
     
 
     <View style={style.back}>
+      
     <Text style={style.word}>暖身</Text>
     <Text style={style.zero}>2</Text>
     <Text style={style.num}>/4</Text>
@@ -108,7 +122,12 @@ backgroundColor:'#DAD7D7'
     width:140,
     marginTop:-3,
     marginLeft:25
-  }
+  },
+  ball: {
+    height: 0,
+    width: 0,
+    
+  },
 });
 
 export default targetScreen;

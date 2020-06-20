@@ -1,10 +1,10 @@
 import React ,{useState}from "react";
-import { StyleSheet,ScrollView, Linking,View,Image, TouchableOpacity} from 'react-native';
+import { StyleSheet,ScrollView, Linking,View,Image} from 'react-native';
 import { Button, Card, Text, PricingCard, Tile, withTheme,CheckBox } from 'react-native-elements';
 import { BorderlessButton } from "react-native-gesture-handler";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import finishScreen from "./finishScreen";
-const helpScreen = ({ navigation }) => {
+
+const finishScreen = ({ route }) => {
   const [isSelected, setSelection] = useState(false);
   
   return (
@@ -136,10 +136,8 @@ const helpScreen = ({ navigation }) => {
     <Image
                         style={style.pic}
                         source={{uri:'https://github.com/lg30assqwedrf/11111111111111111/blob/master/191997.png?raw=true'}}/>
-     <TouchableOpacity   onPress={() => navigation.navigate('finish', finishScreen)}>
     <View style={style.finish}></View>
     <Text style={style.word2}>完成</Text>
-    </TouchableOpacity>
   </ScrollView>
   </View>
   );
@@ -198,4 +196,4 @@ marginLeft:71
   
 });
 
-export default helpScreen;
+export default finishScreen;

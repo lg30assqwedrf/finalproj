@@ -23,6 +23,7 @@ const defaultData = [
 ];
 
 
+
 const DetailScreen = ({ route }) => {
   const [graphicData, setGraphicData] = useState(defaultData);
   useEffect(() => {
@@ -53,7 +54,8 @@ const DetailScreen = ({ route }) => {
       
        width={330}
        height={300}
-    theme={VictoryTheme.material}
+
+    
   >
     <VictoryAxis/>
     <VictoryBar
