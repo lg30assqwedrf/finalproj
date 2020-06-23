@@ -1,10 +1,10 @@
-import React ,{useState}from "react";
-import { StyleSheet,ScrollView, Linking,View,Image, TouchableOpacity} from 'react-native';
+import React ,{useRef,useState}from "react";
+import { StyleSheet,ScrollView, Linking,View,Image, TouchableOpacity,AsyncStorage} from 'react-native';
 import { Button, Card, Text, PricingCard, Tile, withTheme,CheckBox } from 'react-native-elements';
 import { BorderlessButton } from "react-native-gesture-handler";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import finishScreen from "./finishScreen";
-
+const COUNTER_KEY = "COUNTER_KEY";
 const helpScreen = ({ navigation }) => {
  
   const [isSelected, setSelection] = useState(false);
@@ -16,6 +16,28 @@ const helpScreen = ({ navigation }) => {
   const [isSelected6, setSelection6]=useState(false);
   const [isSelected7, setSelection7]=useState(false);
   const [isSelected8, setSelection8]=useState(false);
+  const saveToAsyncStorage = () => {
+    try {
+      AsyncStorage.setItem(COUNTER_KEY, JSON.stringify(isSelected));
+    } catch (error) {
+      // Error saving data
+    }
+  };
+  const restoreState = async () => {
+    try {
+      const savedStateString = await AsyncStorage.getItem(COUNTER_KEY);
+      const state = JSON.parse(savedStateString);
+      setCount(state);
+    } catch (e) {}
+  };
+
+  React.useEffect(() => {
+    restoreState();
+  }, []);
+
+  React.useEffect(() => {
+    saveToAsyncStorage();
+  }, [isSelected]);
 
    return (
     
@@ -26,7 +48,7 @@ const helpScreen = ({ navigation }) => {
     <View style={style.container}>
       <View style={style.checkboxContainer}>
         <CheckBox
-          value={isSelected}
+        
           onPress={() => setSelection(!isSelected)}
           style={style.checkbox}
           center

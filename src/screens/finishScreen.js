@@ -91,7 +91,7 @@ export default () => {
     animation="pulse" easing="ease-out" iterationCount="infinite"
   >
     <SpinnerBtn 
-      title='Sign In'
+      title='開始諮詢'
       backgroundColor='#4AAF4C'
       onPress={()=>console.log('Pressed!!')}
 

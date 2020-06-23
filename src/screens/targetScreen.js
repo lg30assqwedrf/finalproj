@@ -5,19 +5,21 @@ import warmupScreen from "./warmupScreen";
 
 
 
-const targetScreen = ({ props }) => {
+const targetScreen = ({ navigation }) => {
 
 
 
   return (
     
-    <View style={style.allback}>
-    <ScrollView >
-    
-    
 
+    <ScrollView style={style.allback}>
+    
+    
+    <TouchableOpacity 
+            onPress={() => navigation.navigate('warmup', warmupScreen)}
+          >
     <View style={style.back}>
-      
+    
     <Text style={style.word}>暖身</Text>
     <Text style={style.zero}>2</Text>
     <Text style={style.num}>/4</Text>
@@ -28,6 +30,7 @@ const targetScreen = ({ props }) => {
       <View style={style.line1}/>   
       
     </View>
+    </TouchableOpacity>
     <View style={style.back}>
     <Text style={style.word}>伸展</Text>
     <Text style={style.zero}>0</Text>
@@ -67,12 +70,12 @@ const targetScreen = ({ props }) => {
 
    
   </ScrollView>
-  </View>
+ 
   );
 }
 const style = StyleSheet.create({
   allback:{
- 
+ flex:1,
 backgroundColor:'#DAD7D7'
   },
   back:{

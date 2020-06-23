@@ -36,7 +36,10 @@ const AlbumScreen = ({navigation }) => {
 
                 <Image
                     style={styles.pic1}
-                    source={{uri:albumData.bookList[0].image}}/>
+                    source={{uri:albumData.bookList[0].image,
+                    }}
+                    
+                    />
                     
             </View>
             </TouchableOpacity>
