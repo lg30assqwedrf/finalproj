@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 
 import { StyleSheet,ScrollView, Linking,View,Image } from 'react-native';
 import { Button, Card, Text, PricingCard, Tile } from 'react-native-elements';
-import { VictoryPie,VictoryChart,VictoryTheme,VictoryAxis,VictoryBar } from "victory-native";
+import { VictoryPie,VictoryChart,VictoryLine,VictoryAxis } from "victory-native";
 const sampleData = [
-  { x: "週六", y: 10 },
-  { x: "週日", y: 90 },
-  { x: "週一", y: 130 },
-  { x: "週二", y: 40 },
-  { x: "週三", y: 80 },
-  { x: "週四", y: 55 },
-  { x: "週五", y: 25 },
+  { x: "00:00", y: 100 },
+  { x: "04:00", y: 100 },
+  { x: "08:00", y: 100 },
+  { x: "12:00", y: 100 },
+  { x: "16:00", y: 100 },
+  { x: "20:00", y:100 },
+  { x: "00:00", y: 100 },
   
 ];
 const defaultData = [
@@ -41,7 +41,7 @@ const heartScreen = ({ route }) => {
 
     <View style={style.back}>
         <Text style={style.today}>今天</Text>
-        <Text style={style.num}>5,432</Text>
+        <Text style={style.num}>無</Text>
         <Text style={style.average}>平均</Text>
         <View style={style.line1}></View>
         <View style={style.line2}></View>
@@ -49,9 +49,10 @@ const heartScreen = ({ route }) => {
 
 
      <View style={style.picback}>
-       <Text style={style.word}>過去一週</Text>
+       <Text style={style.word}>心率圖</Text>
        <View style={style.pic}>
-       <VictoryChart
+       
+<VictoryChart minDomain={{ y: 0 }}
       
        width={330}
        height={300}
@@ -59,7 +60,7 @@ const heartScreen = ({ route }) => {
     
   >
     <VictoryAxis/>
-    <VictoryBar
+    <VictoryLine
     animate={{ easing: "bounce" }}
     data={graphicData}
       data={sampleData}
@@ -72,12 +73,12 @@ const heartScreen = ({ route }) => {
     </View>
     
     <View style={style.box}>
-        <Text style={style.word1}>本日階梯數</Text>
-        <Text style={style.stair}>4樓</Text>
+        <Text style={style.word1}>連接APPLE WATCH</Text>
+        <Text style={style.stair}>未連接</Text>
     </View>
 
     <View style={style.down}>
-    <Text style={style.today}>顯示每天記錄</Text>
+    <Text style={style.today}>顯示每日記錄</Text>
     <Image
                         style={style.pic1}
                         source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/right.png?raw=true'}}/>

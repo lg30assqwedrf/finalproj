@@ -108,7 +108,7 @@ const AlbumStack = ({navigation}) => {
           component={everyScreen}
           options={({route})=>({
            
-            title: '心跳監測',
+            title: '每日紀錄',
             headerStyle: {
               backgroundColor: '#2B475D',
               height:90,

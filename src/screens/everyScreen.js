@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { StyleSheet,ScrollView, Linking,View,Image } from 'react-native';
+import { StyleSheet,ScrollView, Linking,View,Image,TouchableOpacity } from 'react-native';
 import { Button, Card, Text, PricingCard, Tile } from 'react-native-elements';
 import { VictoryPie,VictoryChart,VictoryTheme,VictoryAxis,VictoryBar } from "victory-native";
 const sampleData = [
@@ -25,7 +25,7 @@ const defaultData = [
 
 
 
-const heartScreen = ({ route }) => {
+const everyScreen = ({ route }) => {
   const [graphicData, setGraphicData] = useState(defaultData);
   useEffect(() => {
     setGraphicData(sampleData);
@@ -203,4 +203,4 @@ borderRadius:22,
  },
 });
 
-export default heartScreen;
+export default everyScreen;

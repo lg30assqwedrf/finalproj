@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import { Video } from 'expo-av';
 import { StyleSheet,ScrollView, Linking,View,Image } from 'react-native';
 import { Button, Card, Text, PricingCard, Tile } from 'react-native-elements';
-import { VictoryPie,VictoryChart,VictoryTheme,VictoryAxis,VictoryBar } from "victory-native";
+import { VictoryPie,VictoryChart,VictoryPolarAxis,VictoryBar } from "victory-native";
+import Panel from "./Panel";
 const sampleData = [
   { x: "週六", y: 10 },
   { x: "週日", y: 90 },
@@ -37,12 +38,21 @@ const heartScreen = ({ route }) => {
      
     <ScrollView >
     
-    
+    <Video
+  source={{ uri: 'https://github.com/lg30assqwedrf/11111111111111111/blob/master/Better%20sleep-%20a%202-minute%20guide.mp4?raw=true' }}
+  rate={1.0}
+  volume={1.0}
+  isMuted={false}
+  resizeMode="cover"
+  shouldPlay
+  isLooping
+  style={{ width: 340, height: 300 ,borderRadius:30,marginLeft:18                                                          ,marginTop:20}}
+/>
 
     <View style={style.back}>
-        <Text style={style.today}>今天</Text>
-        <Text style={style.num}>5,432</Text>
-        <Text style={style.average}>平均</Text>
+        <Text style={style.today}>睡眠分析</Text>
+        <Text style={style.num}>7小時27分</Text>
+        <Text style={style.average}>20/7/2 上午10:34</Text>
         <View style={style.line1}></View>
         <View style={style.line2}></View>
     </View>
@@ -51,19 +61,16 @@ const heartScreen = ({ route }) => {
      <View style={style.picback}>
        <Text style={style.word}>過去一週</Text>
        <View style={style.pic}>
-       <VictoryChart
-      
-       width={330}
-       height={300}
-
-    
+       <VictoryChart polar
+       width={340}
+       height={280}
   >
-    <VictoryAxis/>
+      
+    <VictoryPolarAxis/>
     <VictoryBar
-    animate={{ easing: "bounce" }}
-    data={graphicData}
       data={sampleData}
-      style={{ data: { width:30,fill: "#FF5511" }}}
+      style={{ data: { fill: "#c43a31", stroke: "black", strokeWidth: 2 }}}
+   
     />
   </VictoryChart>
      
@@ -71,10 +78,19 @@ const heartScreen = ({ route }) => {
      
     </View>
     
-    <View style={style.box}>
-        <Text style={style.word1}>本日階梯數</Text>
-        <Text style={style.stair}>4樓</Text>
-    </View>
+  
+    <Panel
+      title="就寢時間"
+      expanded="false"
+      content="如何設定就寢時間
+    第一次設定就寢時間時，「時鐘」app 會先詢問幾個問題：
+      
+      開啟「時鐘」app，然後點一下「就寢時間」標籤頁。
+      點一下「開始設定」，然後選擇您的設定。
+      點一下「完成」。
+      設定就寢時間後，iPhone 會提醒您該上床睡覺，並響起鬧鐘喚醒您起床。"
+    />
+ 
 
     <View style={style.down}>
     <Text style={style.today}>顯示每天記錄</Text>
@@ -116,7 +132,7 @@ backgroundColor:'#DAD7D7'
   
   },
   average:{
-    marginLeft:270,
+    marginLeft:200,
     color:'#939393',
 
   },
