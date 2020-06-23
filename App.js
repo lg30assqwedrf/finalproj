@@ -25,7 +25,9 @@ import albumData from "./src/json/albums.json";
 import ShareScreen from './src/screens/ShareScreen';
 import targetScreen from "./src/screens/targetScreen";
 import helpScreen from "./src/screens/helpScreen";
+import warmupScreen from "./src/screens/warmupScreen";
 import finishScreen from "./src/screens/finishScreen";
+import periodScreen from "./src/screens/periodScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -97,6 +99,23 @@ const AlbumStack = ({navigation}) => {
             },  
           })}
         />
+         <Stack.Screen 
+          name="warmup" 
+          component={warmupScreen}
+          options={({route})=>({
+           
+            title: '暖身',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
           <Stack.Screen 
           name="help" 
           component={helpScreen}
@@ -120,7 +139,7 @@ const AlbumStack = ({navigation}) => {
           component={finishScreen}
           options={({route})=>({
            
-            title: '您的症狀',
+            title: '線上小幫手',
             headerStyle: {
               backgroundColor: '#2B475D',
               height:90,
@@ -131,6 +150,23 @@ const AlbumStack = ({navigation}) => {
               fontSize: 20
             },  
             
+          })}
+        />
+         <Stack.Screen 
+          name="period" 
+          component={periodScreen}
+          options={({route})=>({
+           
+            title: '經期紀錄',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
           })}
         />
                 

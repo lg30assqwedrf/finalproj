@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet,ScrollView ,View,Image} from 'react-native';
 import { ListItem ,Text,SearchBar,Input,Icon} from 'react-native-elements';
-
+import albumData from "../json/albums.json";
 export default class App extends React.Component {
   state = {
     search: '',
@@ -34,25 +34,25 @@ export default class App extends React.Component {
          <View style={style.picback1}>
             <Image
                         style={style.pic1}
-                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/heart.png?raw=true'}}/>
+                        source={{uri:albumData.bookList[0].image}}/>
                 <Text style={style.word1}>心跳</Text>
             </View>
             <View style={style.picback2}>
             <Image
                         style={style.pic1}
-                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/man.png?raw=true'}}/>
+                        source={{uri:albumData.bookList[1].image}}/>
                 <Text style={style.word1}>步行</Text>
             </View>
             <View style={style.picback3}>
             <Image
                         style={style.pic1}
-                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/sleep.png?raw=true'}}/>
+                        source={{uri:albumData.bookList[3].image}}/>
                 <Text style={style.word1}>睡眠</Text>
             </View>
             <View style={style.picback4}>
             <Image
                         style={style.pic1}
-                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/ugly.png?raw=true'}}/>
+                        source={{uri:albumData.bookList[4].image}}/>
                 <Text style={style.word1}>健康狀況</Text>
             </View>
       <Text style={style.bottom}>Contact us :（02）1234-5678</Text>

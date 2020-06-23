@@ -11,6 +11,7 @@ const sampleData = [
   { x: "週三", y: 80 },
   { x: "週四", y: 55 },
   { x: "週五", y: 25 },
+  
 ];
 const defaultData = [
   { x: "週六", y: 0 },

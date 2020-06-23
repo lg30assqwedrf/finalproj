@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet,ScrollView,View,Image, TouchableOpacity , Linking} from 'react-native';
 import { ListItem,Text } from 'react-native-elements';
-import sharedata from "../json/share.json";
+
 // Make a component
 const ShareScreen = ({ navigation }) => {
     return (
@@ -12,35 +12,35 @@ const ShareScreen = ({ navigation }) => {
               
             <Image
                         style={style.pic5}
-                        source={{uri:sharedata.bookList[4].image}}/>
+                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/240_F_41374323_Uufcg8fDqyqZvXtHCs6W4GVGAlulb9kv.jpg?raw=true'}}/>
                         </View>
                         <TouchableOpacity 
           >
                         <View>
                         <Image
                         style={style.pic1}
-                        source={{uri:sharedata.bookList[0].image}}/>
+                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/line.png?raw=true'}}/>
                         </View>
                         </TouchableOpacity> 
                         <TouchableOpacity> 
                         <View>
                         <Image
                         style={style.pic2}
-                        source={{uri:sharedata.bookList[1].image}}/>
+                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/facebook.png?raw=true'}}/>
                         </View>
                         </TouchableOpacity> 
                         <TouchableOpacity> 
                         <View>
                         <Image
                         style={style.pic3}
-                        source={{uri:sharedata.bookList[2].image}}/>
+                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/instagram.png?raw=true'}}/>
                         </View>
                         </TouchableOpacity> 
                         <TouchableOpacity> 
                         <View>
                         <Image
                         style={style.pic4}
-                        source={{uri:sharedata.bookList[3].image}}/>
+                        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/twitter.png?raw=true'}}/>
                         </View>
                         </TouchableOpacity> 
                         

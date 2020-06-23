@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet,ScrollView,View ,Image} from 'react-native';
 import { Tile, ListItem, Icon,Text } from 'react-native-elements';
-
+import sharedata from "../json/share.json";
 
 
 // Make a component
@@ -12,7 +12,7 @@ const MeScreen = ({ navigation }) => {
         
       <Image
         style={style.pic}
-        source={{uri:'https://github.com/lg30assqwedrf/image-test/blob/master/user.png?raw=true'}}
+        source={{uri:sharedata.bookList[5].image}}
       />
       <Text style={style.word}>月光仙子</Text>
         

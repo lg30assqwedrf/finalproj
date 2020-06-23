@@ -5,6 +5,7 @@ import albumData from "../json/albums.json";
 import DetailScreen from "./DetailScreen";
 import targetScreen from "./targetScreen";
 import helpScreen from "./helpScreen";
+import periodScreen from "./periodScreen";
 
 const AlbumScreen = ({navigation }) => {
   return (
@@ -17,7 +18,9 @@ const AlbumScreen = ({navigation }) => {
           >
             <Text style={styles.cata}>每日目標</Text>
             </TouchableOpacity>
-            <TouchableOpacity  onPress={() => alert('ＴＡＢ！')}>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('period', periodScreen)}
+          >
             <Text style={styles.record}>經期紀錄</Text>
             </TouchableOpacity>
             <TouchableOpacity   onPress={() => navigation.navigate('help', helpScreen)}>

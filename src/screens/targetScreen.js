@@ -1,27 +1,19 @@
 import React ,{useState,useRef}from "react";
 import { StyleSheet,ScrollView, Linking,View,Animated,Dimensions,TouchableOpacity,Image } from 'react-native';
 import { Button, Card, Text, PricingCard, Tile } from 'react-native-elements';
+import warmupScreen from "./warmupScreen";
 
-const { width, height } = Dimensions.get("window");
 
 
-const targetScreen = ({ route }) => {
+const targetScreen = ({ props }) => {
 
-  const [graphicData, setGraphicData] = useState(defaultData);
-  useEffect(() => {
-    setGraphicData(sampleData);
-  }, []);
 
-  
 
   return (
     
     <View style={style.allback}>
     <ScrollView >
-    <AnimatedBall
-      style={[position.getLayout(), style.ball]}
-      onPress={() => startAnimation()}
-    /> 
+    
     
 
     <View style={style.back}>
@@ -29,6 +21,9 @@ const targetScreen = ({ route }) => {
     <Text style={style.word}>暖身</Text>
     <Text style={style.zero}>2</Text>
     <Text style={style.num}>/4</Text>
+
+        
+     
       <View style={style.line}/>
       <View style={style.line1}/>   
       
@@ -67,7 +62,7 @@ const targetScreen = ({ route }) => {
       </View>
         
 
-
+    
     
 
    
@@ -85,7 +80,7 @@ backgroundColor:'#DAD7D7'
     width:330,
     backgroundColor:'#FFFFFF',
     marginLeft:25,
-    marginTop:25,
+    marginTop:30,
     borderRadius:25,
   },
   line:{
