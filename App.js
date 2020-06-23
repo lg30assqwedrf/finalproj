@@ -28,6 +28,10 @@ import helpScreen from "./src/screens/helpScreen";
 import warmupScreen from "./src/screens/warmupScreen";
 import finishScreen from "./src/screens/finishScreen";
 import periodScreen from "./src/screens/periodScreen";
+import heartScreen from "./src/screens/heartScreen";
+import dietScreen from "./src/screens/dietScreen";
+import sleepScreen from "./src/screens/sleepScreen";
+import everyScreen from "./src/screens/everyScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -64,6 +68,74 @@ const AlbumStack = ({navigation}) => {
               </View>            
             ),  
           }}
+        />
+        <Stack.Screen 
+          name="heart" 
+          component={heartScreen}
+          options={({route})=>({
+           
+            title: '心跳監測',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+        <Stack.Screen 
+          name="diet" 
+          component={dietScreen}
+          options={({route})=>({
+           
+            title: '飲食習慣',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+        <Stack.Screen 
+          name="every" 
+          component={everyScreen}
+          options={({route})=>({
+           
+            title: '心跳監測',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+         <Stack.Screen 
+          name="sleep" 
+          component={sleepScreen}
+          options={({route})=>({
+           
+            title: '睡眠品質',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
         />
         <Stack.Screen 
           name="Detail" 
