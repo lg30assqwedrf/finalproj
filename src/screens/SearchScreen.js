@@ -1,67 +1,82 @@
 import React from "react";
-import { StyleSheet,ScrollView ,View,Image} from 'react-native';
-import { ListItem ,Text,SearchBar,Input,Icon} from 'react-native-elements';
+import { StyleSheet,ScrollView ,View,Image, TouchableOpacity} from 'react-native';
+import {Text,SearchBar,Input,Icon} from 'react-native-elements';
 import albumData from "../json/albums.json";
-export default class App extends React.Component {
-  state = {
-    search: '',
-  };
+import DetailScreen from "./DetailScreen";
+import heartScreen from "./heartScreen";
+import dietScreen from "./dietScreen";
+import sleepScreen from "./sleepScreen";
 
-  updateSearch = search => {
-    this.setState({ search });
-  };
 
-  render() {
-    const { search } = this.state;
-
+const SearchScreen = ({navigation }) => {
+  const [value, onChangeText] = React.useState(0);
+ 
     return (
+      
       <View style={style.back}>
         <ScrollView style={{paddingTop: 20}}>
+   
         <View style={style.search}> 
-        <Input
-  placeholder='INPUT WITH ERROR MESSAGE'
-  errorStyle={{ color: 'red' }}
-  errorMessage='ENTER A VALID ERROR HERE'
-/>
+        <SearchBar
+  lightTheme
+ onChangeText={text => onChangeText(value)}
 
-<Input placeholder="Password" secureTextEntry={true} />
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
+  icon={{ type: 'font-awesome', name: 'search' }}
+  placeholder='Type Here...'
+  value={value}
+  />
+
+
+
          </View>
+         <TouchableOpacity 
+            onPress={() => navigation.navigate('heart', heartScreen)}
+          >
          <View style={style.picback1}>
             <Image
                         style={style.pic1}
                         source={{uri:albumData.bookList[0].image}}/>
                 <Text style={style.word1}>心跳</Text>
             </View>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('Detail', DetailScreen)}
+          >
             <View style={style.picback2}>
             <Image
                         style={style.pic1}
                         source={{uri:albumData.bookList[1].image}}/>
                 <Text style={style.word1}>步行</Text>
             </View>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('sleep', sleepScreen)}
+          >
             <View style={style.picback3}>
             <Image
                         style={style.pic1}
                         source={{uri:albumData.bookList[3].image}}/>
                 <Text style={style.word1}>睡眠</Text>
+                
             </View>
+            </TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('diet', dietScreen)}
+          >
             <View style={style.picback4}>
             <Image
                         style={style.pic1}
-                        source={{uri:albumData.bookList[4].image}}/>
-                <Text style={style.word1}>健康狀況</Text>
+                        source={{uri:albumData.bookList[2].image}}/>
+                <Text style={style.word1}>飲食</Text>
             </View>
+            </TouchableOpacity>
       <Text style={style.bottom}>Contact us :（02）1234-5678</Text>
       </ScrollView>
         </View>
   
     );
   
-  }
+  
 }
 
 const style = StyleSheet.create({
@@ -134,3 +149,4 @@ const style = StyleSheet.create({
 }
 );
 
+export default SearchScreen;

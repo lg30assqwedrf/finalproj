@@ -15,12 +15,12 @@ if (
     Platform.OS === "android" &&
     UIManager.setLayoutAnimationEnabledExperimental
   ) {
-    UIManager.setLayoutAnimationEnabledExperimental(true);
+    UIManager.setLayoutAnimationEnabledExperimental(0);
   }
   
 
 const Panel = ({ content, title, expanded }) => {
-  const [height, setHeight] = useState(expanded ? null : 0);
+  const [height, setHeight] = useState(expanded ? 0 : null);
   const onToggle = () => {
     LayoutAnimation.spring();
     setHeight(height === null ? 0 : null);

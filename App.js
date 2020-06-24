@@ -1,4 +1,5 @@
 import React from 'react';
+import * as firebase from "firebase";
 import { NavigationContainer } from '@react-navigation/native';
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -32,6 +33,20 @@ import heartScreen from "./src/screens/heartScreen";
 import dietScreen from "./src/screens/dietScreen";
 import sleepScreen from "./src/screens/sleepScreen";
 import everyScreen from "./src/screens/everyScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDUH6vOCALEXSjYHgv8P9d2y3tKklE44qA",
+  authDomain: "f2e2020-bd468.firebaseapp.com",
+  databaseURL: "https://f2e2020-bd468.firebaseio.com",
+  projectId: "f2e2020-bd468",
+  storageBucket: "f2e2020-bd468.appspot.com",
+  messagingSenderId: "832044128799",
+  appId: "1:832044128799:web:5dedad46efcd2c3253932a",
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -277,6 +292,74 @@ const SearchStack = ({navigation}) => {
             ),              
           }}
         />  
+         <Stack.Screen 
+          name="heart" 
+          component={heartScreen}
+          options={({route})=>({
+           
+            title: '心跳監測',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+        <Stack.Screen 
+          name="Detail" 
+          component={DetailScreen}
+          options={({route})=>({
+           
+            title: '步行紀錄',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+       <Stack.Screen 
+          name="sleep" 
+          component={sleepScreen}
+          options={({route})=>({
+           
+            title: '睡眠品質',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+              <Stack.Screen 
+          name="diet" 
+          component={dietScreen}
+          options={({route})=>({
+           
+            title: '飲食習慣',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
       </Stack.Navigator>
   );
 }
@@ -382,6 +465,23 @@ const SettingsStack = ({navigation}) => {
             ),              
           }}
         />  
+         <Stack.Screen 
+          name="Login" 
+          component={LoginScreen}
+          options={({route})=>({
+           
+            title: '登入',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
       </Stack.Navigator>
   );
 }

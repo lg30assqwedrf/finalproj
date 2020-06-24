@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet,ScrollView } from 'react-native';
+import { StyleSheet,ScrollView,TouchableOpacity } from 'react-native';
 import { ListItem,Text,Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import LoginScreen from "./LoginScreen";
 
 // Make a component
 const SettingsScreen = ({ navigation }) => {
@@ -25,10 +25,14 @@ const SettingsScreen = ({ navigation }) => {
               title="Siri語音捷徑"
               rightIcon={{name:'arrow-forward'}}
             />
+            <TouchableOpacity 
+            onPress={() => navigation.navigate('Login', LoginScreen)}
+          >
             <ListItem
-              title="登出"
-              rightIcon={{ name: 'cancel' }}
+              title="登入"
+              rightIcon={{ name: 'arrow-forward' }}
             />
+            </TouchableOpacity>
             <Text style={style.bottom}>Contact us :（02）1234-5678</Text>
         </ScrollView>
     );
