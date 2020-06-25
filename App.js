@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import * as firebase from "firebase";
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -35,18 +35,6 @@ import sleepScreen from "./src/screens/sleepScreen";
 import everyScreen from "./src/screens/everyScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDUH6vOCALEXSjYHgv8P9d2y3tKklE44qA",
-  authDomain: "f2e2020-bd468.firebaseapp.com",
-  databaseURL: "https://f2e2020-bd468.firebaseio.com",
-  projectId: "f2e2020-bd468",
-  storageBucket: "f2e2020-bd468.appspot.com",
-  messagingSenderId: "832044128799",
-  appId: "1:832044128799:web:5dedad46efcd2c3253932a",
-};
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -515,6 +503,22 @@ const CustomDrawerContent = ({ ...rest }) => {
 }
 
 const App = () => {
+  useEffect(()=>{
+    const firebaseConfig = {
+      apiKey: "AIzaSyDNKt9uIAaow1KXAsrQp0wY6yIJvm2St5s",
+    authDomain: "myproj-cb1f6.firebaseapp.com",
+    databaseURL: "https://myproj-cb1f6.firebaseio.com",
+    projectId: "myproj-cb1f6",
+    storageBucket: "myproj-cb1f6.appspot.com",
+    messagingSenderId: "781679391709",
+    appId: "1:781679391709:web:c49c82642b50e2b2263c34",
+    measurementId: "G-M2FLTW8J27"
+    };
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    },[]);
+    
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   React.useEffect(() => {

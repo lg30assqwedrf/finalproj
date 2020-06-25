@@ -1,14 +1,56 @@
-import React,{useState} from "react";
-import { View, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
+import React, { useState, useContext } from "react";
+import * as firebase from "firebase";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
+import { Button, Text } from "react-native-elements";
 import Input from "../components/Input";
+import { StoreContext } from "../stores";
 
 // Make a component
-const LoginScreen = (navigation) => {
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-    console.log(`email=${email}`);
-    console.log(`password=${password}`);
+const LoginScreen = ({ navigation }) => {
+  const { isLoginState } = useContext(StoreContext);
+  const [isLogin, setIsLogin] = isLoginState;
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onSignIn = async () => {
+    setError(" ");
+    setLoading(true);
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      setEmail("");
+      setPassword("");
+      setError("");
+      setIsLogin(true);
+    } catch (err1) {
+      try {
+        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        setIsLogin(true);
+        setEmail("");
+        setPassword("");
+        setError("");
+      } catch (err2) {
+        setError(err2.message);
+      }
+    } finally {
+        setLoading(false);
+    }
+  };
+
+  const renderButton = () => {
+    return loading ? (
+      <ActivityIndicator size="large" style={{ marginTop: 30 }} />
+    ) : (
+      <Button
+        title="Sign in"
+        buttonStyle={{ backgroundColor: "#4AAF4C" }}
+        containerStyle={{ padding: 5 }}
+        onPress={onSignIn}
+      />
+    );
+  };
+  
   return (
     <View>
       <View style={styles.formStyle}>
@@ -32,11 +74,8 @@ const LoginScreen = (navigation) => {
           value={password}
           onChangeText={(password) => setPassword(password)}
         />
-        <Button
-          title="Sign in"
-          buttonStyle={{ backgroundColor: "#4AAF4C" }}
-          containerStyle={{ padding: 5 }}
-        />
+        {renderButton()}
+        <Text style={{ padding: 10, fontSize: 16, color: "red" }}>{error}</Text>
       </View>
       <View style={styles.formStyle}>
         <Button
