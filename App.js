@@ -1,8 +1,10 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useContext} from 'react';
 import * as firebase from "firebase";
 import { NavigationContainer } from '@react-navigation/native';
-
 import { createStackNavigator } from '@react-navigation/stack';
+
+
+import { StoreContext, StoreProvider } from "./src/stores";
 import {   
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -34,10 +36,24 @@ import dietScreen from "./src/screens/dietScreen";
 import sleepScreen from "./src/screens/sleepScreen";
 import everyScreen from "./src/screens/everyScreen";
 import LoginScreen from "./src/screens/LoginScreen";
-
+import UserScreen from "./src/screens/UserScreen";
+import workoutScreen from "./src/screens/workoutScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
+const firebaseConfig = {
+  apiKey: "AIzaSyDNKt9uIAaow1KXAsrQp0wY6yIJvm2St5s",
+authDomain: "myproj-cb1f6.firebaseapp.com",
+databaseURL: "https://myproj-cb1f6.firebaseio.com",
+projectId: "myproj-cb1f6",
+storageBucket: "myproj-cb1f6.appspot.com",
+messagingSenderId: "781679391709",
+appId: "1:781679391709:web:c49c82642b50e2b2263c34",
+measurementId: "G-M2FLTW8J27"
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const PERSISTENCE_KEY = "ALBUMS_NAVIGATION_STATE";
 
@@ -180,6 +196,23 @@ const AlbumStack = ({navigation}) => {
           options={({route})=>({
            
             title: '暖身',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+         <Stack.Screen 
+          name="workout" 
+          component={workoutScreen}
+          options={({route})=>({
+           
+            title: '健身計畫',
             headerStyle: {
               backgroundColor: '#2B475D',
               height:90,
@@ -503,21 +536,8 @@ const CustomDrawerContent = ({ ...rest }) => {
 }
 
 const App = () => {
-  useEffect(()=>{
-    const firebaseConfig = {
-      apiKey: "AIzaSyDNKt9uIAaow1KXAsrQp0wY6yIJvm2St5s",
-    authDomain: "myproj-cb1f6.firebaseapp.com",
-    databaseURL: "https://myproj-cb1f6.firebaseio.com",
-    projectId: "myproj-cb1f6",
-    storageBucket: "myproj-cb1f6.appspot.com",
-    messagingSenderId: "781679391709",
-    appId: "1:781679391709:web:c49c82642b50e2b2263c34",
-    measurementId: "G-M2FLTW8J27"
-    };
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    },[]);
+ 
+ 
     
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   const [initialNavigationState, setInitialNavigationState] = React.useState();

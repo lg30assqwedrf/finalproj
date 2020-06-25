@@ -1,14 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import * as firebase from "firebase";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { Button, Text } from "react-native-elements";
 import Input from "../components/Input";
-import { StoreContext } from "../stores";
 
 // Make a component
-const LoginScreen = ({ navigation }) => {
-  const { isLoginState } = useContext(StoreContext);
-  const [isLogin, setIsLogin] = isLoginState;
+const LoginScreen = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [error, setError] = useState("");
@@ -19,14 +16,9 @@ const LoginScreen = ({ navigation }) => {
     setLoading(true);
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      setEmail("");
-      setPassword("");
-      setError("");
-      setIsLogin(true);
     } catch (err1) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
-        setIsLogin(true);
         setEmail("");
         setPassword("");
         setError("");
@@ -50,7 +42,7 @@ const LoginScreen = ({ navigation }) => {
       />
     );
   };
-  
+
   return (
     <View>
       <View style={styles.formStyle}>
