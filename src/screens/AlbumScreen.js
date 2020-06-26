@@ -10,6 +10,8 @@ import heartScreen from "./heartScreen";
 import dietScreen from "./dietScreen";
 import sleepScreen from "./sleepScreen";
 import workoutScreen from "./workoutScreen";
+import virusScreen from "./virusScreen";
+import healthyScreen from "./healthyScreen";
 const AlbumScreen = ({navigation }) => {
   return (
       
@@ -107,9 +109,7 @@ const AlbumScreen = ({navigation }) => {
         </View>
 
         <View style={styles.box3}>
-        <TouchableOpacity 
-            onPress={() => navigation.navigate('Detail', DetailScreen)}
-          >
+        <TouchableOpacity   onPress={() => navigation.navigate('healthy', healthyScreen)}>
             <View style={styles.picback3}>
                 <Image
                     style={styles.pic3}
@@ -160,9 +160,7 @@ const AlbumScreen = ({navigation }) => {
             </View>
         </View>
         <View style={styles.box44}>
-        <TouchableOpacity 
-            onPress={() => navigation.navigate('Detail', DetailScreen)}
-          >
+        <TouchableOpacity   onPress={() => navigation.navigate('virus', virusScreen)}>
             <View style={styles.picback44}>
                 <Image
                     style={styles.pic44}

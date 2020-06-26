@@ -47,7 +47,7 @@ const workoutScreen = ({ route }) => {
      running={run}
         until={5}
         onFinish={() => setnum(num-1)}
-        onFinish={()=>setline(LINEWIDTH)}
+       
         onPress={() => setrun(1)}
         size={20}
         timeToShow={['M', 'S']}

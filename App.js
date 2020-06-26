@@ -38,6 +38,8 @@ import everyScreen from "./src/screens/everyScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import UserScreen from "./src/screens/UserScreen";
 import workoutScreen from "./src/screens/workoutScreen";
+import virusScreen from "./src/screens/virusScreen";
+import healthyScreen from "./src/screens/healthyScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -122,6 +124,23 @@ const AlbumStack = ({navigation}) => {
             },  
           })}
         />
+         <Stack.Screen 
+          name="healthy" 
+          component={healthyScreen}
+          options={({route})=>({
+           
+            title: '健康狀況',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
         <Stack.Screen 
           name="every" 
           component={everyScreen}
@@ -162,6 +181,23 @@ const AlbumStack = ({navigation}) => {
           options={({route})=>({
            
             title: '步行紀錄',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+         <Stack.Screen 
+          name="virus" 
+          component={virusScreen}
+          options={({route})=>({
+           
+            title: '病毒須知',
             headerStyle: {
               backgroundColor: '#2B475D',
               height:90,

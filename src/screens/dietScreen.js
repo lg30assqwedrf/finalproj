@@ -7,11 +7,12 @@ const COUNTER_KEY = "COUNTER_KEY";
 const dataColor = ["#388087", "#6fb3b8", "#badfe7"];
 
 const dietScreen = ({ navigation }) => {
+  const [value, onChangeText] = useState('*輸入今天攝取之蛋白質*');
   const [graphicData, setGraphicData] = useState(defaultData);
   useEffect(() => {
     setGraphicData(sampleData);
   }, []);
-  const [value, onChangeText] = useState('*輸入今天攝取之蛋白質*');
+
   const defaultData = [
     { x: "碳水", y: 0 },
     { x: "蛋白質", y: 0 },
@@ -20,7 +21,7 @@ const dietScreen = ({ navigation }) => {
   
   const sampleData = [
     { x: "碳水", y: 35  },
-    { x: "蛋白質", y: 40 },
+    { x: "蛋白質", y: 35 },
     { x: "脂肪", y: 55 },
   ];
   const saveToAsyncStorage = () => {
@@ -54,7 +55,7 @@ const dietScreen = ({ navigation }) => {
   source={{ uri: 'https://github.com/lg30assqwedrf/11111111111111111/blob/master/Healthy%20Eating-%20An%20introduction%20for%20children%20aged%205-11%20(1).mp4?raw=true' }}
   rate={1.0}
   volume={1.0}
-  isMuted={false}
+  isMuted={1}
   resizeMode="cover"
   shouldPlay
   isLooping
