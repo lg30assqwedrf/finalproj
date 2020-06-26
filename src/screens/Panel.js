@@ -42,10 +42,12 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     marginTop:25,
 marginLeft:25,
-
 width:330,
 backgroundColor:'#FFFFFF',
 borderRadius:22,
+shadowColor: "#000",
+shadowOffset:{width:5,height:5},
+shadowOpacity:0.2,
   },
   title: {
     fontWeight: "bold",
