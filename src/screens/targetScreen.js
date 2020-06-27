@@ -85,6 +85,9 @@ backgroundColor:'#DAD7D7'
     marginLeft:25,
     marginTop:30,
     borderRadius:25,
+    shadowColor: "#000",
+    shadowOffset:{width:5,height:5},
+    shadowOpacity:0.2,
   },
   line:{
       backgroundColor:'#DAD7D7',

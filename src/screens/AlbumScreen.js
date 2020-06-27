@@ -12,6 +12,7 @@ import sleepScreen from "./sleepScreen";
 import workoutScreen from "./workoutScreen";
 import virusScreen from "./virusScreen";
 import healthyScreen from "./healthyScreen";
+import doctorScreen from "./doctorScreen";
 const AlbumScreen = ({navigation }) => {
   return (
       
@@ -125,9 +126,7 @@ const AlbumScreen = ({navigation }) => {
             </View>
         </View>
         <View style={styles.box33}>
-        <TouchableOpacity 
-            onPress={() => navigation.navigate('Detail', DetailScreen)}
-          >
+        <TouchableOpacity   onPress={() => navigation.navigate('doctor', doctorScreen)}>
             <View style={styles.picback33}>
                 <Image
                     style={styles.pic33}

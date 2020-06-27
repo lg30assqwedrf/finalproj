@@ -40,6 +40,7 @@ import UserScreen from "./src/screens/UserScreen";
 import workoutScreen from "./src/screens/workoutScreen";
 import virusScreen from "./src/screens/virusScreen";
 import healthyScreen from "./src/screens/healthyScreen";
+import doctorScreen from "./src/screens/doctorScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -130,6 +131,23 @@ const AlbumStack = ({navigation}) => {
           options={({route})=>({
            
             title: '健康狀況',
+            headerStyle: {
+              backgroundColor: '#2B475D',
+              height:90,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: '400',
+              fontSize: 20
+            },  
+          })}
+        />
+        <Stack.Screen 
+          name="doctor" 
+          component={doctorScreen}
+          options={({route})=>({
+           
+            title: '就醫紀錄',
             headerStyle: {
               backgroundColor: '#2B475D',
               height:90,

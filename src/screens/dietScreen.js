@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Video } from 'expo-av';
 import { StyleSheet,ScrollView, Linking,View,Image,TextInput,TouchableOpacity, AsyncStorage,Text, } from 'react-native';
-import { VictoryPie } from "victory-native";
+import { VictoryPie,Button } from "victory-native";
 import everyScreen from "./everyScreen";
 const COUNTER_KEY = "COUNTER_KEY";
 const dataColor = ["#388087", "#6fb3b8", "#badfe7"];
 
-const dietScreen = ({ navigation }) => {
+function dietScreen  ({ navigation })  {
   const [value, onChangeText] = useState('*輸入今天攝取之蛋白質*');
   const [graphicData, setGraphicData] = useState(defaultData);
   useEffect(() => {
     setGraphicData(sampleData);
   }, []);
+  const[num,setnum]=useState(0)
 
   const defaultData = [
     { x: "碳水", y: 0 },
@@ -21,32 +22,45 @@ const dietScreen = ({ navigation }) => {
   
   const sampleData = [
     { x: "碳水", y: 35  },
-    { x: "蛋白質", y: 35 },
+    { x: "蛋白質", y: value },
     { x: "脂肪", y: 55 },
   ];
-  const saveToAsyncStorage = () => {
-    try {
+  
+  const saveFn = () => {
+    onChangeText(value);
+    try{
       AsyncStorage.setItem(COUNTER_KEY, JSON.stringify(value));
     } catch (error) {
-      // Error saving data
+  
     }
   };
-  const restoreState = async () => {
-    try {
-      const savedStateString = await AsyncStorage.getItem(COUNTER_KEY);
-      const state = JSON.parse(savedStateString);
-      setCount(state);
-    } catch (e) {}
-  };
 
-  React.useEffect(() => {
-    restoreState();
+  useEffect(() => {
+    const restoreTextState = async () => {
+      try{
+        const savedStateString = await AsyncStorage.getItem(COUNTER_KEY);
+        const state = JSON.parse(savedStateString);
+        onChangeText(state);
+      }catch(e){
+  
+      }
+    };
+    restoreTextState();
   }, []);
-
-  React.useEffect(() => {
-    saveToAsyncStorage();
-  }, [value]);
-
+  const onPress = () =>{
+    return(
+    <View>
+      <TextInput
+                  style={{ width:254,height: 25, borderColor: 'gray', borderWidth: 1 }}
+                  onChangeText={text => onChangeText(text)}
+                  value={value}
+              />
+              <View style={{marginLeft:3}}>
+                  <Button onPress={saveFn} title="save" backgroundColor="green" color="green"/>
+              </View>
+    </View>
+    )
+};
   return (
     <View style={style.allback}>
      
@@ -70,7 +84,11 @@ const dietScreen = ({ navigation }) => {
     />
     </View>
     
-  <Text>{value}</Text>
+    <TouchableOpacity onPress={saveFn}>
+   <View style={style.box5}>
+    <Text style={style.word2}>提交</Text>
+    </View>
+</TouchableOpacity>
   
     
    
@@ -126,6 +144,9 @@ backgroundColor:'#DAD7D7'
     marginLeft:25,
     marginTop:25,
     borderRadius:25,
+    shadowColor: "#000",
+    shadowOffset:{width:5,height:5},
+    shadowOpacity:0.2,
   },
   today:{
     fontSize:18,
@@ -167,6 +188,9 @@ backgroundColor:'#DAD7D7'
    marginLeft:25,
    marginTop:25,
    borderRadius:30,
+   shadowColor: "#000",
+   shadowOffset:{width:5,height:5},
+   shadowOpacity:0.2,
  },
  pic:{
   height:289,
@@ -187,6 +211,9 @@ height:100,
 width:330,
 backgroundColor:'#FFFFFF',
 borderRadius:22,
+shadowColor: "#000",
+shadowOffset:{width:5,height:5},
+shadowOpacity:0.2,
 
  },
  word1:{
@@ -207,6 +234,9 @@ height:45,
 width:330,
 backgroundColor:'#FFFFFF',
 borderRadius:22,
+shadowColor: "#000",
+shadowOffset:{width:5,height:5},
+shadowOpacity:0.2,
  },
  pic1:{
     height:25,
@@ -226,6 +256,18 @@ borderRadius:22,
     marginLeft:95,
     marginTop:7
  },
+ box5:{
+  marginTop:20,
+  marginLeft:160,
+  height:30,
+  width:50,
+  backgroundColor:'#FFBB66',
+  borderRadius:20
+ },
+ word2:{
+   textAlign:'center',
+   marginTop:8
+ }
 });
 
 export default dietScreen;
